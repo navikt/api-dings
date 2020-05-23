@@ -1,13 +1,16 @@
 group = "no.nav"
 version = "0.0.1"
 
-val tokenSupport = "1.1.5"
-val ktorVersion = "1.3.2"
-val kluentVersion = "1.61"
-val platformRunner = "1.5.1"
-val wiremockVersion = "2.26.3"
-val juniper = "5.6.2"
-val juniperPlatform = "1.6.2"
+object Versions {
+    const val tokenSupport = "1.1.5"
+    const val ktorVersion = "1.3.2"
+    const val kluentVersion = "1.61"
+    const val platformRunner = "1.5.1"
+    const val wiremockVersion = "2.26.3"
+    const val juniper = "5.6.2"
+    const val juniperPlatform = "1.6.2"
+    const val logstashEncoder = "6.2"
+}
 
 val mainClassName = "no.nav.dingsvalidate.DingsvalidateKt"
 
@@ -42,23 +45,24 @@ tasks {
 
 dependencies {
     implementation (kotlin("stdlib"))
-    implementation ("io.ktor:ktor-auth:$ktorVersion")
-    implementation ("io.ktor:ktor-auth-jwt:$ktorVersion")
-    implementation ("io.ktor:ktor-server-netty:$ktorVersion")
-    implementation ("io.ktor:ktor-jackson:$ktorVersion")
-    implementation ("io.ktor:ktor-client-core:$ktorVersion")
-    implementation ("io.ktor:ktor-client-jackson:$ktorVersion")
-    implementation ("no.nav.security:token-validation-ktor:$tokenSupport")
-    implementation("no.nav.security:token-validation-test-support:$tokenSupport")
+    implementation ("io.ktor:ktor-auth:${Versions.ktorVersion}")
+    implementation ("io.ktor:ktor-auth-jwt:${Versions.ktorVersion}")
+    implementation ("io.ktor:ktor-server-netty:${Versions.ktorVersion}")
+    implementation ("io.ktor:ktor-jackson:${Versions.ktorVersion}")
+    implementation ("io.ktor:ktor-client-core:${Versions.ktorVersion}")
+    implementation ("io.ktor:ktor-client-jackson:${Versions.ktorVersion}")
+    implementation ("no.nav.security:token-validation-ktor:${Versions.tokenSupport}")
+    implementation("no.nav.security:token-validation-test-support:${Versions.tokenSupport}")
+    implementation("net.logstash.logback:logstash-logback-encoder:${Versions.logstashEncoder}")
 
-    testImplementation("io.ktor:ktor-server-test-host:$ktorVersion") {
+    testImplementation("io.ktor:ktor-server-test-host:${Versions.ktorVersion}") {
         exclude(group = "org.eclipse.jetty")
     }
-    testImplementation("org.amshove.kluent:kluent:$kluentVersion")
-    testImplementation("org.junit.platform:junit-platform-runner:$platformRunner")
-    testImplementation ("com.github.tomakehurst:wiremock:$wiremockVersion")
-    testImplementation ("org.junit.jupiter:junit-jupiter-engine:$juniper")
-    testImplementation ("org.junit.jupiter:junit-jupiter-api:$juniper")
-    testImplementation ("org.junit.platform:junit-platform-launcher:$juniperPlatform")
+    testImplementation("org.amshove.kluent:kluent:${Versions.kluentVersion}")
+    testImplementation("org.junit.platform:junit-platform-runner:${Versions.platformRunner}")
+    testImplementation ("com.github.tomakehurst:wiremock:${Versions.wiremockVersion}")
+    testImplementation ("org.junit.jupiter:junit-jupiter-engine:${Versions.juniper}")
+    testImplementation ("org.junit.jupiter:junit-jupiter-api:${Versions.juniper}")
+    testImplementation ("org.junit.platform:junit-platform-launcher:${Versions.juniperPlatform}")
 
 }
