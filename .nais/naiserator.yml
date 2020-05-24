@@ -9,8 +9,8 @@ spec:
   image: {{image}}
   accessPolicy:
     outbound:
-      external:
-        - host: tokendings.dev-gcp.nais.io
+      rules:
+        - application: tokendings
     inbound:
       rules:
         - application: dingser

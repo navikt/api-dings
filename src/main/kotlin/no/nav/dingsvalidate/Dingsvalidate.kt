@@ -42,6 +42,7 @@ fun Application.module(enableMock: Boolean = this.environment.config.property("n
         get("/openhello") {
             call.respondText("<b>Hello in the open</b>", ContentType.Text.Html)
         }
+
         selfTest(readySelfTestCheck = { applicationStatus.initialized }, aLiveSelfTestCheck = { applicationStatus.running })
     }
 }
