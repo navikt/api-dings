@@ -51,6 +51,7 @@ dependencies {
     implementation ("io.ktor:ktor-jackson:${Versions.ktorVersion}")
     implementation ("io.ktor:ktor-client-core:${Versions.ktorVersion}")
     implementation ("io.ktor:ktor-client-jackson:${Versions.ktorVersion}")
+    implementation("io.ktor:ktor-client-cio:${Versions.ktorVersion}")
     implementation ("no.nav.security:token-validation-ktor:${Versions.tokenSupport}")
     implementation("no.nav.security:token-validation-test-support:${Versions.tokenSupport}")
     implementation("net.logstash.logback:logstash-logback-encoder:${Versions.logstashEncoder}")
