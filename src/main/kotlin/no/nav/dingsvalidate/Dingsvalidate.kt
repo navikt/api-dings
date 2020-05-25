@@ -2,10 +2,11 @@ package no.nav.dingsvalidate
 
 import io.ktor.application.Application
 import io.ktor.application.call
+import io.ktor.application.install
 import io.ktor.http.ContentType
 import io.ktor.response.respondText
+import io.ktor.routing.Routing
 import io.ktor.routing.get
-import io.ktor.routing.routing
 import io.ktor.util.KtorExperimentalAPI
 import no.nav.security.token.support.core.configuration.ProxyAwareResourceRetriever
 import no.nav.security.token.support.test.FileResourceRetriever
@@ -28,7 +29,7 @@ fun Application.module(enableMock: Boolean = this.environment.config.property("n
     //         tokenValidationSupport(config = config)
     // }
 
-    routing {
+    install(Routing) {
         // authenticate {
         get("/hello") {
             call.respondText("<b>Authenticated hello</b>", ContentType.Text.Html)
