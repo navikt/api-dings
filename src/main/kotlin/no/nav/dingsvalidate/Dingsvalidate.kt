@@ -42,6 +42,7 @@ fun Application.module(enableMock: Boolean = this.environment.config.property("n
 
         selfTest(readySelfTestCheck = { applicationStatus.initialized }, aLiveSelfTestCheck = { applicationStatus.running })
     }
+    applicationStatus.initialized = true
 }
 
 private val mockResourceRetriever: ProxyAwareResourceRetriever =
