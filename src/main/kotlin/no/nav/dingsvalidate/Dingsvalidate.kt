@@ -49,9 +49,9 @@ fun Application.module(enableMock: Boolean = this.environment.config.property("n
         authenticate {
             get("/hello") {
                 val principal = call.principal<TokenValidationContextPrincipal>()
-                val claims = principal?.context?.anyValidClaims
+                val claims = principal?.context?.anyValidClaims?.orElse(null)
                 call.respondText(
-                    "<b>Authenticated hello to you ${claims?.map { it.subject }} with pid='${claims?.map { it.get("pid") }}'</b>",
+                    "<b>Authenticated hello for token with sub='${claims?.subject}' with pid='${claims?.get("pid")}'</b>",
                     ContentType.Text.Html
                 )
             }
