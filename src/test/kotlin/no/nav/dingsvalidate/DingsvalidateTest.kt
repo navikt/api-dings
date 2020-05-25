@@ -19,6 +19,7 @@ import no.nav.security.token.support.test.JwkGenerator
 import no.nav.security.token.support.test.JwtTokenGenerator
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 private const val idTokenCookieName = "selvbetjening-idtoken"
@@ -26,6 +27,7 @@ private const val idTokenCookieName = "selvbetjening-idtoken"
 @KtorExperimentalAPI
 class DingsvalidateTest {
 
+    @Disabled("Authentication disabled")
     @Test
     fun hello_withMissingJWTShouldGive_401_Unauthorized() {
         withTestApplication({
@@ -72,6 +74,7 @@ class DingsvalidateTest {
         }
     }
 
+    @Disabled("Authentication disabled")
     @Test
     fun openhello_withMissingJWTShouldGive_200() {
         withTestApplication({
