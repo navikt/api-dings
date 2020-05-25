@@ -8,6 +8,7 @@ import io.ktor.application.call
 import io.ktor.application.install
 import io.ktor.auth.Authentication
 import io.ktor.auth.authenticate
+import io.ktor.auth.principal
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.features.json.JacksonSerializer
@@ -21,6 +22,7 @@ import io.ktor.routing.get
 import io.ktor.util.KtorExperimentalAPI
 import kotlinx.coroutines.runBlocking
 import no.nav.security.token.support.core.configuration.ProxyAwareResourceRetriever
+import no.nav.security.token.support.ktor.TokenValidationContextPrincipal
 import no.nav.security.token.support.ktor.tokenValidationSupport
 import no.nav.security.token.support.test.FileResourceRetriever
 import java.net.URL
@@ -46,14 +48,14 @@ fun Application.module(enableMock: Boolean = this.environment.config.property("n
     install(Routing) {
         authenticate {
             get("/hello") {
-                call.respondText("<b>Authenticated hello</b>", ContentType.Text.Html)
+                val principal = call.principal<TokenValidationContextPrincipal>()
+                val claims = principal?.context?.anyValidClaims
+                call.respondText(
+                    "<b>Authenticated hello to you ${claims?.map { it.subject }} with pid='${claims?.map { it.get("pid") }}'</b>",
+                    ContentType.Text.Html
+                )
             }
         }
-
-        get("/openhello") {
-            call.respondText("<b>Hello in the open</b>", ContentType.Text.Html)
-        }
-
         selfTest(readySelfTestCheck = { applicationStatus.initialized }, aLiveSelfTestCheck = { applicationStatus.running })
     }
     applicationStatus.initialized = true
