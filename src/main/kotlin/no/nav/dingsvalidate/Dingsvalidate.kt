@@ -25,18 +25,18 @@ fun Application.module(enableMock: Boolean = this.environment.config.property("n
     val config = this.environment.config
     val applicationStatus = ApplicationStatus()
 
-    install(Authentication) {
-        if (enableMock)
-            tokenValidationSupport(config = config, resourceRetriever = mockResourceRetriever)
-        else
-            tokenValidationSupport(config = config)
-    }
+   // install(Authentication) {
+   //     if (enableMock)
+   //         tokenValidationSupport(config = config, resourceRetriever = mockResourceRetriever)
+   //     else
+   //         tokenValidationSupport(config = config)
+   // }
 
     routing {
-        authenticate {
+        // authenticate {
             get("/hello") {
                 call.respondText("<b>Authenticated hello</b>", ContentType.Text.Html)
-            }
+         //   }
         }
 
         get("/openhello") {
