@@ -2,14 +2,14 @@ group = "no.nav"
 version = "0.0.1"
 
 object Versions {
-    const val tokenSupport = "1.1.5"
+    const val tokenSupport = "1.3.0"
     const val ktorVersion = "1.3.2"
     const val kluentVersion = "1.61"
     const val platformRunner = "1.5.1"
     const val wiremockVersion = "2.26.3"
     const val juniper = "5.6.2"
     const val juniperPlatform = "1.6.2"
-    const val logstashEncoder = "6.2"
+    const val logstashEncoder = "6.4"
 }
 
 val mainClassName = "no.nav.dingsvalidate.DingsvalidateKt"
