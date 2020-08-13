@@ -10,7 +10,9 @@ spec:
   accessPolicy:
     outbound:
       external:
-        - host: tokendings.dev-gcp.nais.io
+      {{#each outbound-host}}
+        - host: "{{this}}"
+      {{/each}}
     inbound:
       rules:
         - application: dingser
