@@ -25,7 +25,7 @@ import org.junit.jupiter.api.Test
 private const val idTokenCookieName = "selvbetjening-idtoken"
 
 @KtorExperimentalAPI
-class DingsApiTest {
+class ApiDingsTest {
 
     @Disabled("Authentication disabled")
     @Test
@@ -113,7 +113,7 @@ private fun stubOIDCProvider() {
     stubFor(
             any(urlPathEqualTo("/.well-known/openid-configuration")).willReturn(
                     okJson(
-                            "{\"jwks_uri\": \"${DingsApiTest.server.baseUrl()}/keys\", " +
+                            "{\"jwks_uri\": \"${ApiDingsTest.server.baseUrl()}/keys\", " +
                                     "\"subject_types_supported\": [\"pairwise\"], " +
                                     "\"issuer\": \"${JwtTokenGenerator.ISS}\"}"
                     )
@@ -137,7 +137,7 @@ private fun Application.doConfig(
         put("no.nav.security.jwt.issuers.0.issuer_name", acceptedIssuer)
         put(
                 "no.nav.security.jwt.issuers.0.discoveryurl",
-                "${DingsApiTest.server.baseUrl()}/.well-known/openid-configuration"
+                "${ApiDingsTest.server.baseUrl()}/.well-known/openid-configuration"
         )
         put("no.nav.security.jwt.issuers.0.accepted_audience", acceptedAudience)
         put("no.nav.security.jwt.issuers.0.cookie_name", idTokenCookieName)

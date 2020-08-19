@@ -13,7 +13,7 @@ object Versions {
     const val kotlinloggingVersion = "1.8.3"
 }
 
-val mainClassName = "no.nav.dings.DingsApiKt"
+val mainClassName = "no.nav.dings.ApiDingsKt"
 
 plugins {
     kotlin("jvm") version "1.3.72"

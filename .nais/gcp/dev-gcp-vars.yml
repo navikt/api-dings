@@ -1,7 +1,7 @@
 namespace: plattformsikkerhet
 team: plattformsikkerhet
 ingresses:
-  - https://dings-api.dev-gcp.nais.io
+  - https://api-dings.dev-gcp.nais.io
 env:
   - name: APPLICATION_PORT
     value: 8080
@@ -12,7 +12,7 @@ env:
   - name: OIDC_DISCOVERY_URL
     value: "https://tokendings.dev-gcp.nais.io/.well-known/oauth-authorization-server"
   - name: OIDC_ACCEPTED_AUDIENCE
-    value: dev-gcp:plattformsikkerhet:dings-api
+    value: dev-gcp:plattformsikkerhet:api-dings
   - name: GCP_ENABLED
     value: true
 replicas:
