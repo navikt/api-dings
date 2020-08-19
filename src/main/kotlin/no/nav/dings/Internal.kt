@@ -1,4 +1,4 @@
-package no.nav.dingsvalidate
+package no.nav.dings
 
 import io.ktor.application.call
 import io.ktor.http.HttpStatusCode

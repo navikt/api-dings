@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  IMAGE: docker.pkg.github.com/${{ github.repository }}/dings-validate:${{ github.sha }}
+  IMAGE: docker.pkg.github.com/${{ github.repository }}/dings-api:${{ github.sha }}
 
 jobs:
   build:
@@ -60,8 +60,8 @@ jobs:
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-gcp
-          RESOURCE: .nais/naiserator.yml
-          VARS: .nais/dev-gcp-vars.yml
+          RESOURCE: .nais/gcp/naiserator-gcp.yml
+          VARS: .nais/gcp/dev-gcp-vars.yml
 
   deploy-prod-gcp:
     name: Deploy to prod-gcp
@@ -74,5 +74,5 @@ jobs:
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: prod-gcp
-          RESOURCE: .nais/naiserator.yml
-          VARS: .nais/prod-gcp-vars.yml
+          RESOURCE: .nais/gcp/naiserator-gcp.yml
+          VARS: .nais/gcp/prod-gcp-vars.yml

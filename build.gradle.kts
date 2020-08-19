@@ -10,9 +10,10 @@ object Versions {
     const val juniper = "5.6.2"
     const val juniperPlatform = "1.6.2"
     const val logstashEncoder = "6.4"
+    const val kotlinloggingVersion = "1.8.3"
 }
 
-val mainClassName = "no.nav.dingsvalidate.DingsvalidateKt"
+val mainClassName = "no.nav.dings.DingsApiKt"
 
 plugins {
     kotlin("jvm") version "1.3.72"
@@ -31,6 +32,14 @@ repositories {
 }
 
 tasks {
+    withType<org.jmailen.gradle.kotlinter.tasks.LintTask> {
+        dependsOn("formatKotlin")
+    }
+    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+        kotlinOptions {
+            jvmTarget = "13"
+        }
+    }
     withType<Jar> {
         manifest.attributes["Main-Class"] = mainClassName
     }
@@ -55,6 +64,7 @@ dependencies {
     implementation ("no.nav.security:token-validation-ktor:${Versions.tokenSupport}")
     implementation("no.nav.security:token-validation-test-support:${Versions.tokenSupport}")
     implementation("net.logstash.logback:logstash-logback-encoder:${Versions.logstashEncoder}")
+    implementation ("io.github.microutils:kotlin-logging:${Versions.kotlinloggingVersion}")
 
     testImplementation("io.ktor:ktor-server-test-host:${Versions.ktorVersion}") {
         exclude(group = "org.eclipse.jetty")

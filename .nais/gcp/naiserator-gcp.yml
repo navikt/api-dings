@@ -1,7 +1,7 @@
 kind: Application
 apiVersion: nais.io/v1alpha1
 metadata:
-  name: dings-validate
+  name: dings-api
   namespace: {{namespace}}
   labels:
     team: {{team}}

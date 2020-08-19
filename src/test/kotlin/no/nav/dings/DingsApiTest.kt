@@ -1,4 +1,4 @@
-package no.nav.dingsvalidate
+package no.nav.dings
 
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock.any
@@ -25,7 +25,7 @@ import org.junit.jupiter.api.Test
 private const val idTokenCookieName = "selvbetjening-idtoken"
 
 @KtorExperimentalAPI
-class DingsvalidateTest {
+class DingsApiTest {
 
     @Disabled("Authentication disabled")
     @Test
@@ -113,7 +113,7 @@ private fun stubOIDCProvider() {
     stubFor(
             any(urlPathEqualTo("/.well-known/openid-configuration")).willReturn(
                     okJson(
-                            "{\"jwks_uri\": \"${DingsvalidateTest.server.baseUrl()}/keys\", " +
+                            "{\"jwks_uri\": \"${DingsApiTest.server.baseUrl()}/keys\", " +
                                     "\"subject_types_supported\": [\"pairwise\"], " +
                                     "\"issuer\": \"${JwtTokenGenerator.ISS}\"}"
                     )
@@ -137,7 +137,7 @@ private fun Application.doConfig(
         put("no.nav.security.jwt.issuers.0.issuer_name", acceptedIssuer)
         put(
                 "no.nav.security.jwt.issuers.0.discoveryurl",
-                "${DingsvalidateTest.server.baseUrl()}/.well-known/openid-configuration"
+                "${DingsApiTest.server.baseUrl()}/.well-known/openid-configuration"
         )
         put("no.nav.security.jwt.issuers.0.accepted_audience", acceptedAudience)
         put("no.nav.security.jwt.issuers.0.cookie_name", idTokenCookieName)
