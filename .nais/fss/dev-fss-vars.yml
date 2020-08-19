@@ -20,3 +20,5 @@ replicas:
   max: 1
 outbound-host:
   - tokendings.dev-gcp.nais.io
+gcpcluster: dev-gcp
+gcpnamespace: plattformsikkerhet

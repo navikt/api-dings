@@ -16,6 +16,8 @@ spec:
     inbound:
       rules:
         - application: debug-dings
+          namespace: {{gcpnamespace}}
+          cluster: {{gcpcluster}}
   ingresses:
     {{#each ingresses}}
      - "{{this}}"
