@@ -15,7 +15,7 @@ spec:
       {{/each}}
     inbound:
       rules:
-        - application: debug-dings
+        - application: dingser
   ingresses:
     {{#each ingresses}}
      - "{{this}}"
