@@ -18,6 +18,9 @@ spec:
         - application: debug-dings
           namespace: {{gcpnamespace}}
           cluster: {{gcpcluster}}
+        - application: frontend-dings
+          namespace: {{gcpnamespace}}
+          cluster: {{gcpcluster}}
   ingresses:
     {{#each ingresses}}
      - "{{this}}"
