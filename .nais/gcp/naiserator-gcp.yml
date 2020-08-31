@@ -42,6 +42,8 @@ spec:
       cpu: 600m
       memory: 3Gi
   cpuThresholdPercentage: 80
+  tokenx:
+    enabled: true
   env:
   {{#each env}}
     - name: "{{this.name}}"
