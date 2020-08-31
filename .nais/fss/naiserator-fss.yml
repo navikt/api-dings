@@ -48,8 +48,6 @@ spec:
       memory: 3Gi
   webproxy: true
   cpuThresholdPercentage: 80
-  tokenx:
-    enabled: true
   env:
   {{#each env}}
     - name: "{{this.name}}"
