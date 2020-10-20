@@ -8,11 +8,6 @@ metadata:
 spec:
   image: {{image}}
   accessPolicy:
-    outbound:
-      external:
-      {{#each outbound-host}}
-        - host: "{{this}}"
-      {{/each}}
     inbound:
       rules:
         - application: debug-dings
@@ -46,7 +41,6 @@ spec:
     requests:
       cpu: 600m
       memory: 3Gi
-  webproxy: true
   cpuThresholdPercentage: 80
   tokenx:
     enabled: true
