@@ -9,10 +9,6 @@ env:
     value: tokenDings
   - name: MOCK_ENABLED
     value: false
-  - name: OIDC_DISCOVERY_URL
-    value: "https://tokendings.prod-gcp.nais.io/.well-known/oauth-authorization-server"
-  - name: OIDC_ACCEPTED_AUDIENCE
-    value: prod-fss:plattformsikkerhet:api-dings
   - name: GCP_ENABLED
     value: false
 replicas:
